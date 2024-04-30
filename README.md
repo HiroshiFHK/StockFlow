@@ -37,7 +37,7 @@ python -m pip install --upgrade pip
 Instale o Django e as dependências do projeto usando o pip:
 
 ```
-pip install django django-browser-reload django-tailwind python-decouple
+pip install django django-browser-reload django-tailwind python-decouple pandas
 ```
 
 ## Configuração do Tailwind CSS
@@ -61,6 +61,8 @@ Inicie o servidor de desenvolvimento Django:
 ```
 python manage.py runserver
 ```
+
+Lembre-se de ainda ter outro terminal com o "python manage.py tailwind start" rodando
 
 O servidor estará disponível em http://127.0.0.1:8000/. 
 Você pode acessar esta URL em seu navegador para ver a aplicação em execução.
