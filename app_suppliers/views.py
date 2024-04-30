@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 # @login_required
 def suppliers(request):
-    return render(request, 'suppliers.html')
+    return render(request, 'apps/app_suppliers/suppliers.html')

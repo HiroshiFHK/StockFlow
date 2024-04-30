@@ -1,6 +1,8 @@
-from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
+from app_products.models import Products
 
-# @login_required
 def queries(request):
-    return render(request, 'queries.html')
+    produtos = Products.objects.all()
+    return render(request, 'apps/app_queries/queries.html', {'produtos':produtos})

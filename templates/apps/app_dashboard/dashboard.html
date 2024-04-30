@@ -1,0 +1,17 @@
+{% extends 'default/default.html' %}
+{% load static %}
+
+{% block sidebar %}
+    {% include 'partials/_sidebar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+<div class="h-full w-full bg-white rounded-sm shadow-2xl shadow-slate-300 p-5">
+    <h1 class="font-bold text-xl">Dashboard</h1>
+    <hr class="my-2">
+    <div>
+        {{ tabela_html|safe }}
+    </div>
+</div>
+
+{% endblock content %}

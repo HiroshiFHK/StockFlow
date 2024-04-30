@@ -1,0 +1,65 @@
+{% extends 'default/default.html' %}
+{% load static %}
+
+{% block sidebar %}
+    {% include 'partials/_sidebar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+<div class="h-full w-full bg-white rounded-sm shadow-2xl shadow-slate-300 p-5">
+    <div class="w-full flex justify-between">
+        <h1 class="font-bold text-xl">Consulta de Produtos</h1>
+        <input type="text" id="searchInput" name="search" autofocus="autofocus" placeholder="Digite sua busca" class="bg-gray-50 text-gray-900 rounded-lg border-slate-400 block w-96 p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">
+    </div>
+    <hr class="mb-4 mt-2">
+    <div class="w-full">
+        <div class="w-full">
+            <div class="w-full max-h-96 scroll-x-auto overflow-auto">
+                <div class="shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400 uppercase" id="searchList">
+                        <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Descrição</th>
+                                <th scope="col" class="px-6 py-3">Fabricante</th>
+                                <th scope="col" class="px-6 py-3">Modelo</th>
+                                <th scope="col" class="px-6 py-3">Cor</th>
+                                <th scope="col" class="px-6 py-3">Tamanho</th>
+                                <th scope="col" class="px-6 py-3">GTIN/EAN</th>
+                                <th scope="col" class="px-6 py-3">NCM</th>
+                                <th scope="col" class="px-6 py-3">Estoque Total</th>
+                                <th scope="col" class="px-6 py-3">#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for produto in produtos %}
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ produto.descricao }}
+                                        {% comment %} {{ produto.descricao|slice:":8" }} {% endcomment %}
+                                    </th>
+                                    <td class="px-6 py-4">{{ produto.fabricante }}</td>
+                                    <td class="px-6 py-4">{{ produto.modelo }}</td>
+                                    <td class="px-6 py-4">{{ produto.cor }}</td>
+                                    <td class="px-6 py-4">{{ produto.tamanho }}</td>
+                                    <td class="px-6 py-4">{{ produto.gtin }}</td>
+                                    <td class="px-6 py-4">{{ produto.ncm }}</td>
+                                    <td class="px-6 py-4">{{ produto.qtdproduto }}</td>
+                                    <td class="px-6 py-4 flex mt-2 gap-3 text-xl">
+                                        <a href="{% url "update_products" produto.pk %}"><i class="ri-edit-box-line text-green-500"></i></a>
+                                        <a href="{% url "delete_products" produto.pk %}"><i class="ri-delete-bin-line text-red-500"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}   
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static "js/searchFiltro.js" %}"></script>
+{% endblock scripts %}
+

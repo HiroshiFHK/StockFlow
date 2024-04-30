@@ -1,7 +1,7 @@
 {% load static %}
-<div class="w-56 bg-slate-900 h-screen p-4">
-    <a href="{% url 'dashboard' %}" class=" flex border-b pb-3 border-b-slate-800">
-        <img src="{% static 'default_images/h_logo_450_white.png' %}" alt="StockFlow" title="StockFlow">
+<div class="w-full bg-slate-900 h-full p-4">
+    <a href="{% url 'dashboard' %}" class=" flex border-b pb-3 border-b-slate-800 justify-center">
+        <img src="{% static 'default_images/h_logo_450_white.png' %}" alt="StockFlow" title="StockFlow" class="h-12">
     </a>
     <ul class="text-white font-inter">
         <li class="border-b border-b-slate-800 py-2 flex group active">
@@ -17,15 +17,9 @@
             </a>
         </li>
         <li class="pt-2 flex group">
-            <a href="{% url 'entries' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg">
-                <i class="ri-align-bottom mr-1 text-lg"></i>
-                <span class="text-sm font-extralight">Entrada</span>
-            </a>
-        </li>
-        <li class="pt-2 flex group">
-            <a href="{% url 'exits' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg">
-                <i class="ri-align-top mr-1 text-lg"></i>
-                <span class="text-sm font-extralight">Saída</span>
+            <a href="{% url 'stock' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg">
+                <i class="ri-arrow-left-right-fill mr-1 text-lg"></i>
+                <span class="text-sm font-extralight">Entradas | Saídas</span>
             </a>
         </li>
         <li class="border-b border-b-slate-800 py-2 flex group">

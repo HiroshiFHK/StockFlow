@@ -1,0 +1,175 @@
+{% extends 'default/default.html' %}
+{% load static %}
+
+{% block sidebar %}
+    {% include 'partials/_sidebar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+{% for produto in produtos %}
+<div class="h-full w-full bg-white rounded-sm shadow-2xl shadow-slate-300 p-5">
+    <h1 class="font-bold text-xl">Editar Produto</h1>
+    <hr class="my-2">
+    <div class="w-full">
+        <form action="#" method="post" class="w-full">
+            {% csrf_token %}
+            {% if msg and class == 'alert' %}
+            <div class="w-full flex items-center justify-center my-4">
+                <div id="toast-default" class="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+                    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+                        <i class="ri-alarm-warning-line"></i>
+                        <span class="sr-only">Icone de alerta</span>
+                    </div>
+                    <div class="ms-3 text-sm font-normal">{{ msg }}</div>
+                    <button type="button" class="ms-auto bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-default" aria-label="Close">
+                        <span class="sr-only">Fechar</span>
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+            </div>
+            {% elif msg and class == 'success' %}
+            <div class="w-full flex items-center justify-center my-4">
+                <div id="toast-default" class="flex items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+                    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                        <i class="ri-alarm-warning-line"></i>
+                        <span class="sr-only">Icone de alerta</span>
+                    </div>
+                    <div class="ms-3 text-sm font-normal">{{ msg }}</div>
+                    <button type="button" class="ms-auto bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-default" aria-label="Close">
+                        <span class="sr-only">Fechar</span>
+                        <i class="ri-close-line"></i>
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+            <div class="w-full grid grid-cols-3 gap-6 mb-6">
+                <div>
+                    <label for="tipo">Tipo*</label>
+                    <select name="tipo" id="tipo" autofocus="autofocus" required 
+                        class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg border-slate-400 block w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">
+
+                        <option value = "" selected disabled>Selecione uma opção</option>
+                        <option value="tenis">Tênis</option>
+                        <option value="chinelo">Chinelo</option>
+                        <option value="sandalia">Sandália</option>
+                        <option value="bota">Bota</option>
+
+                    </select>
+                </div>
+                <div>
+                    <label for="fabricante">Fabricante*</label>
+                    <select name="fabricante" id="fabricante" autofocus="autofocus" required
+                        class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg border-slate-400 block w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500 cad-prod">
+
+                        <option value = "" selected disabled>Selecione uma opção</option>
+                        <option value="adidas">Adidas</option>
+                        <option value="asics">Asics</option>
+                        <option value="mizuno">Mizuno</option>
+                        <option value="nike">Nike</option>
+
+                    </select>
+                </div>
+                <div>
+                    <label for="genero">Gênero*</label>
+                    <select name="genero" id="genero" autofocus="autofocus" required
+                        class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg border-slate-400 block w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">
+
+                        <option value = "" selected disabled>Selecione uma opção</option>
+                        <option value="masculino">Feminino</option>
+                        <option value="feminino">Masculino</option>
+                        <option value="unissex">Unissex</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="w-full grid grid-cols-4 gap-6 mb-6">
+                <div>
+                    <label for="modelo" class="block mb-1 text-sm font-medium text-gray-900">Modelo*</label>
+                    <input type="text" name="modelo" id="modelo" autofocus="autofocus" required placeholder="Nike Air, Addidas Grand Court" value="{{produto.modelo}}"
+                        class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg border-slate-400 block w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">
+                </div>
+                <div>
+                    <label for="cor" class="block mb-1 text-sm font-medium text-gray-900">Cor*</label>
+                    <select name="cor" id="cor" autofocus="autofocus" required
+                        class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg border-slate-400 block w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">
+                       
+                        <option value = "" selected disabled>Selecione uma opção</option>
+                        <option value="preto">Preto</option>
+                        <option value="amarelo">Amarelo</option>
+                        <option value="azul">Azul</option>
+                        <option value="branco">Branco</option>
+                        <option value="laranja">Laranja</option>
+                        <option value="verde">Verde</option>
+                        <option value="vermelho">Vermelho</option>
+
+                    </select>
+                </div>
+                <div>
+                    <label for="tamanho" class="block mb-1 text-sm font-medium text-gray-900">Tamanho*</label>
+                    <select name="tamanho" id="tamanho" autofocus="autofocus" required
+                        class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg border-slate-400 block w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">
+
+                        <option value = "" selected disabled>Selecione uma opção</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+
+                    </select>
+                </div>
+                <div>
+                    <label for="qtdProducts">Quantidade*</label>
+                    <input name="qtdProducts" id="qtdProducts" autofocus="autofocus" maxlength = "13" required type="number" min="0" value="{{ produto.qtdproduto }}"
+                        class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg border-slate-400 block w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="descricao" class="block mb-1 text-sm font-medium text-gray-900">Descrição*</label>
+                    <textarea id="descricao" name="descricao" rows="4" placeholder="Escreva uma descrição para o produto..." required
+                        class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg border-slate-400 block w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">{{ produto.descricao }}</textarea>
+                    
+                </div>
+            </div>
+            <div class="mt-6">
+                <h1 class="font-bold text-xl">Informações Fiscais</h1>
+                <hr class="my-2">
+                <div class="h-full grid grid-cols-2 gap-6">
+                    <div>
+                        <label for="ncm">Consulte o NCM do Produto</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="inputDescription" autofocus="autofocus" placeholder="Informe a descriçao do produto. Ex.: Tênis, Chinelo, etc.."
+                                class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg border-slate-400 w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">
+                            <span onclick="consultarAPI()"
+                                class="text-white cursor-pointer bg-slate-400 hover:bg-slate-500 focus:ring-4 focus:outline-none flex-1 transition-colors duration-200 focus:ring-slate-500 rounded-lg text-sm px-5 py-3 text-center">
+                                Pesquisar
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="gtin">GTIN/EAN*</label>
+                        <input name="gtin" id="gtin" autofocus="autofocus" maxlength = "13" required placeholder="Digite o GTIN/EAN" type="text" value="{{ produto.gtin }}"
+                            class="bg-gray-50 text-gray-900 sm:text-sm rounded-lg border-slate-400 block w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div>
+                        <label for="ncmDropdown" class="block mb-1 text-sm font-medium text-gray-900">Resultados da busca por NCM</label>
+                        <select name="ncmDropdown" multiple id="ncmDropdown" autofocus="autofocus" placeholder="Digite o NCM"
+                            class="bg-gray-50 h-36 text-gray-900 sm:text-sm gap-2 rounded-lg border-slate-400 block w-full p-2.5 focus:outline focus:outline-0 focus:ring-transparent focus:border-slate-500">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-end items-end">
+                <button type="submit" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none transition-colors duration-200 focus:ring-red-700 rounded-lg text-sm px-5 py-2.5 text-center">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}
+

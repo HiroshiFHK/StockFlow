@@ -2,6 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('entries/', views.entries, name="entries"),
-    path('exits/', views.exits, name="exits"),
+    path('estoque/', views.stock, name="stock"),
+    path('estoque/transaction/', views.transaction_create, name="transaction_create"),
 ]

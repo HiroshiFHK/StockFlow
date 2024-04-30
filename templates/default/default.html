@@ -1,43 +1,83 @@
 {% load static tailwind_tags %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{% static 'default_images/favicon.ico' %}" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <title>StockFlow | Gerenciador de estoque</title>
 
-    <!-- Stylesheet -->
-	<link rel="stylesheet" href="{% static 'preloader/css/styles.css' %}" type="text/css" media="screen, print"/>
-    <title>StockFlow2.0</title>
-    {% block header %}{% endblock header %}
+    {% comment %} start: remixicon {% endcomment %}
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    {% comment %} end: remixicon {% endcomment %}
+
+    {% comment %} start: preloader {% endcomment %}
+ 	<link rel="stylesheet" href="{% static 'preloader/css/styles.css' %}" type="text/css" media="screen, print"/>
+    {% comment %} end: preloader {% endcomment %}
+
+    {% comment %} start: tailwind {% endcomment %}
+    {% tailwind_css %}
+    {% comment %} end: tailwind {% endcomment %}
+
+    {% comment %} start: flowbit {% endcomment %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
+    {% comment %} end: flowbit {% endcomment %}
+
 </head>
-<body>
-    <!-- Preloader -->
+<body class="text-sm font-inter bg-slate-100">
+    {% comment %} start: preloader {% endcomment %}
     <div id="preloader">
         <div id="status">&nbsp;</div>
     </div>
+    {% comment %} end: preloader {% endcomment %}
 
-    <div class="w-screen h-screen flex justify-start">
-        {% block sidebar %}{% endblock sidebar %}
-        {% block content %}{% endblock content %}
-        {% block footer %}{% endblock footer %}
+    <div class="h-screen flex flex-col">
+        <div class="flex flex-1">
+            <aside class="w-64">
+                {% block sidebar %}
+                {% endblock sidebar %}
+            </aside>
+            
+            <main class="flex-1 p-5">
+                {% block content %}
+                {% endblock content %}
+            </main>
+        </div>
+        
+        <footer class="bg-slate-950 border-t-4 border-slate-800 text-slate-700 p-5 text-center text-sm">
+            
+            2023 - {% now "Y" %} | &copy; StockFlow - Todos os direitos reservados
+
+            {% comment %} {% block footer %}
+            {% endblock footer %} {% endcomment %}
+        </footer>
     </div>
 
-    <!-- jQuery Plugin -->
+    {% comment %} start: jquery {% endcomment %}
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    {% comment %} end: jquery {% endcomment %}
 
-    <!-- Preloader -->
+    {% comment %} start: preloader {% endcomment %}
     <script type="text/javascript">
     //<![CDATA[
         $(window).on('load', function() { 
             $('#status').fadeOut();
             $('#preloader').delay(350).fadeOut('slow');
             $('body').delay(350).css({'overflow':'visible'});
-          })
+        })
     //]]>
     </script>
-    <!-- TailwindCSS -->
-    {% tailwind_css %}
+    {% comment %} end: preloader {% endcomment %}
+
+    {% comment %} start: flowbit {% endcomment %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.js"></script>
+    {% comment %} end: flowbit {% endcomment %}
+
+    <script src="{% static 'js/script.js' %}"></script>
+    
+    {% block scripts %}
+    {% endblock scripts %}
 </body>
 </html>
