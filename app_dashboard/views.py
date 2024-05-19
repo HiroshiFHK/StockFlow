@@ -24,7 +24,7 @@ def user_dashboard(request):
 
     # Análise de dados
     # html_tabela = df.to_html(index=False)
-    sql = """
+    prod_fab = """
         select
             max(fabricante) fabricantes,
             sum(qtdproduto) soma_prod
@@ -33,9 +33,9 @@ def user_dashboard(request):
         group by
             fabricante
             """
-    dados = pd.read_sql(sql, conection)
+    dados = pd.read_sql(prod_fab, conection)
     plt.bar(dados.fabricantes, dados.soma_prod)
-    plt.title("Gráfico: Nº de Produtos x Fabricante")
+    plt.title("Produtos x Fabricante")
 
     buf = io.BytesIO()
     plt.savefig(buf, format='png')
