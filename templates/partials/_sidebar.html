@@ -4,44 +4,44 @@
         <img src="{% static 'default_images/h_logo_450_white.png' %}" alt="StockFlow" title="StockFlow" class="h-12">
     </a>
     <ul class="text-white font-inter">
-        <li class="border-b border-b-slate-800 py-2 flex group active">
+        <li class="border-b border-b-slate-800 py-2 flex group {% if request.resolver_match.url_name == 'dashboard' %} active {% endif %}">
             <a href="{% url 'dashboard' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg group-[.active]:bg-slate-600">
                 <i class="ri-home-line mr-1 text-lg"></i>
                 <span class="text-sm font-extralight">Dashboard</span>
             </a>
         </li>
-        <li class="pt-2 flex group">
-            <a href="{% url 'products' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg">
+        <li class="border-b border-b-slate-800 py-2 flex group {% if request.resolver_match.url_name == 'products' %} active {% endif %}">
+            <a href="{% url 'products' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg group-[.active]:bg-slate-600">
                 <i class="ri-archive-line mr-1 text-lg"></i>
                 <span class="text-sm font-extralight">Novo Produto</span>
             </a>
         </li>
-        <li class="pt-2 flex group">
-            <a href="{% url 'stock' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg">
+        <li class="border-b border-b-slate-800 py-2 flex group {% if request.resolver_match.url_name == 'stock' %} active {% endif %}">
+            <a href="{% url 'stock' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg group-[.active]:bg-slate-600 ">
                 <i class="ri-arrow-left-right-fill mr-1 text-lg"></i>
                 <span class="text-sm font-extralight">Entradas | Saídas</span>
             </a>
         </li>
-        <li class="border-b border-b-slate-800 py-2 flex group">
-            <a href="{% url 'queries' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg">
+        <li class="border-b border-b-slate-800 py-2 flex group {% if request.resolver_match.url_name == 'queries' %} active {% endif %}">
+            <a href="{% url 'queries' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg group-[.active]:bg-slate-600">
                 <i class="ri-search-line mr-1 text-lg"></i>
                 <span class="text-sm font-extralight">Consultas</span>
             </a>
         </li>
-        <li class="pt-2 flex group">
-            <a href="{% url 'clients' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg">
+        <li class="border-b border-b-slate-800 py-2 flex group {% if request.resolver_match.url_name == 'clients' %} active {% endif %}">
+            <a href="{% url 'clients' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg group-[.active]:bg-slate-600">
                 <i class="ri-user-add-line mr-1 text-lg"></i>
                 <span class="text-sm font-extralight">Novo Cliente</span>
             </a>
         </li>
-        <li class="pt-2 flex group">
-            <a href="{% url 'suppliers' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg">
+        <li class="border-b border-b-slate-800 py-2 flex group {% if request.resolver_match.url_name == 'suppliers' %} active {% endif %}">
+            <a href="{% url 'suppliers' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg group-[.active]:bg-slate-600">
                 <i class="ri-luggage-cart-line mr-1 text-lg"></i>
                 <span class="text-sm font-extralight">Fornecedores</span>
             </a>
         </li>
-        <li class="pt-2 flex group">
-            <a href="{% url 'settings' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg">
+        <li class="border-b border-b-slate-800 py-2 flex group {% if request.resolver_match.url_name == 'settings' %} active {% endif %}">
+            <a href="{% url 'settings' %}" class="w-full py-2 bg-slate-800 px-4 hover:bg-slate-600 transition-all rounded-lg group-[.active]:bg-slate-600">
                 <i class="ri-settings-2-line mr-1 text-lg"></i>
                 <span class="text-sm font-extralight">Configurações</span>
             </a>
