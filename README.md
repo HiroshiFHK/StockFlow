@@ -34,10 +34,10 @@ python -m pip install --upgrade pip
 ```
 
 ## Instalação das Dependências
-Instale o Django e as dependências do projeto usando o pip:
+Instale o Django e as dependências do projeto usando o pip (demora alguns minutos):
 
 ```
-pip install django django-browser-reload django-tailwind python-decouple pandas
+pip install django django-browser-reload django-tailwind python-decouple pandas matplot plotly
 ```
 
 ## Configuração do Tailwind CSS

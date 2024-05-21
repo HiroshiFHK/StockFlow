@@ -20,12 +20,13 @@
                         <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">Descrição</th>
+                                <th scope="col" class="px-6 py-3">Tipo</th>
                                 <th scope="col" class="px-6 py-3">Fabricante</th>
                                 <th scope="col" class="px-6 py-3">Modelo</th>
+                                <th scope="col" class="px-6 py-3">Gênero</th>
                                 <th scope="col" class="px-6 py-3">Cor</th>
                                 <th scope="col" class="px-6 py-3">Tamanho</th>
                                 <th scope="col" class="px-6 py-3">GTIN/EAN</th>
-                                <th scope="col" class="px-6 py-3">NCM</th>
                                 <th scope="col" class="px-6 py-3">Estoque Total</th>
                                 <th scope="col" class="px-6 py-3">#</th>
                             </tr>
@@ -37,12 +38,13 @@
                                         {{ produto.descricao }}
                                         {% comment %} {{ produto.descricao|slice:":8" }} {% endcomment %}
                                     </th>
+                                    <td class="px-6 py-4">{{ produto.tipo }}</td>
                                     <td class="px-6 py-4">{{ produto.fabricante }}</td>
                                     <td class="px-6 py-4">{{ produto.modelo }}</td>
+                                    <td class="px-6 py-4">{{ produto.genero }}</td>
                                     <td class="px-6 py-4">{{ produto.cor }}</td>
                                     <td class="px-6 py-4">{{ produto.tamanho }}</td>
                                     <td class="px-6 py-4">{{ produto.gtin }}</td>
-                                    <td class="px-6 py-4">{{ produto.ncm }}</td>
                                     <td class="px-6 py-4">{{ produto.qtdproduto }}</td>
                                     <td class="px-6 py-4 flex mt-2 gap-3 text-xl">
                                         <a href="{% url "update_products" produto.pk %}"><i class="ri-edit-box-line text-green-500"></i></a>
